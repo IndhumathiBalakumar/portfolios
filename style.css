@@ -1,0 +1,346 @@
+/* =========================================================
+   COLOR SETTINGS (EDIT HERE) - change these to re-theme
+   the whole site instantly.
+========================================================= */
+:root {
+  --bg: #0b0e14;          /* main background */
+  --bg-soft: #121722;      /* card background */
+  --text: #e8ecf3;         /* main text color */
+  --text-dim: #8b95a7;     /* subtitle / muted text */
+  --accent: #ffb703;       /* highlight color (Java gold) */
+  --accent-soft: #ffb70322;/* faint accent glow */
+  --border: #212838;       /* card borders */
+}
+
+/* ---------- basic reset ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 100px 0;
+}
+
+h2.section-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--text);
+}
+
+h2.section-title span { color: var(--accent); }
+
+.muted-text { color: var(--text-dim); }
+
+/* ---------- NAVBAR ---------- */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(11, 14, 20, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+}
+
+/* ---------- HERO / HOME ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+}
+
+/* Profile photo circle - EDIT HERE if you want a different size */
+.profile-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.15s;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.hero .typing-text {
+  font-size: 1.3rem;
+  color: var(--accent);
+  min-height: 32px;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.3s;
+}
+
+/* blinking cursor next to the typing effect text */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background: var(--accent);
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+.hero p.tagline {
+  max-width: 600px;
+  color: var(--text-dim);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.45s;
+}
+
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.6s;
+}
+
+.btn {
+  padding: 12px 26px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #14161c;
+}
+
+.btn-outline {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--accent-soft);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ---------- SCROLL REVEAL ----------
+   Elements start hidden (via .reveal class) and script.js
+   adds .active when they scroll into view. */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- ABOUT ---------- */
+.about-text {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+/* ---------- SKILLS ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+/* ---------- EXPERIENCE / EDUCATION TIMELINE ---------- */
+.timeline-item {
+  border-left: 2px solid var(--border);
+  padding: 0 0 30px 24px;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeline-item h3 { color: var(--text); }
+.timeline-item .meta { color: var(--accent); font-size: 0.9rem; margin-bottom: 8px; }
+.timeline-item ul { color: var(--text-dim); padding-left: 20px; }
+
+/* ---------- PROJECTS ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+  border-color: var(--accent);
+}
+
+.project-card h3 { margin-bottom: 8px; }
+.project-card .tech { color: var(--accent); font-size: 0.85rem; margin-bottom: 10px; }
+.project-card ul { color: var(--text-dim); padding-left: 20px; margin-bottom: 14px; font-size: 0.95rem; }
+.project-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.project-card a:hover { text-decoration: underline; }
+
+/* ---------- RESUME ---------- */
+.resume-box { text-align: center; }
+
+/* ---------- CONTACT ---------- */
+.contact-box { text-align: center; }
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.contact-links a {
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- RESPONSIVE / MOBILE ---------- */
+@media (max-width: 700px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--bg-soft);
+    flex-direction: column;
+    width: 200px;
+    padding: 16px;
+    display: none;
+    border: 1px solid var(--border);
+    border-radius: 0 0 0 8px;
+  }
+  .nav-links.open { display: flex; }
+  .menu-toggle { display: flex; }
+  .hero h1 { font-size: 2rem; }
+}
